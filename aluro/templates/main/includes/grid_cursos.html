@@ -2,12 +2,12 @@
     {% for c in cursos %}
     <div class="col">
         <div class="card h-100">
-            <a href="/produto/{{p.id}}">
-                <img src="/static/img/cursos/{{'{:04d}'.format(p.id)}}.jpg" class="card-img-top w-100">
+            <a href="/curso/{{c.id}}">
+                <img src="/static/img/cursos/{{'{:04d}'.format(c.id)}}.jpg" class="card-img-top w-100">
             </a>
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title text-center">
-                    <a href="/produto/{{p.id}}" class="text-decoration-none text-black">
+                    <a href="/curso/{{c.id}}" class="text-decoration-none text-black">
                         {{c.nome}}
                     </a>
                 </h5>
@@ -20,7 +20,7 @@
                     {{ cate.nome }} 
                     {% endfor %}
                 </p>
-                <form method="post" action="/cliente/post_adicionar_carrinho">
+                <form method="post" action="/aluno/post_adicionar_carrinho">
                     <p class="text-center mb-0">
                         <input type="hidden" name="id_curso" value="{{c.id}}">
                         <button class="btn btn-danger" type="submit">

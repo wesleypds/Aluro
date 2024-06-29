@@ -3,32 +3,32 @@
 {% block conteudo %}
 <h1 class="display-5"><b>Alteração de Dados Cadastrais</b></h1>
 <hr>
-<form class="row json-form" method="post" action="/cliente/post_cadastro">
+<form class="row json-form" method="post" action="/aluno/post_cadastro">
     <div class="col-12 col-lg-6">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nome" name="nome" placeholder=" " value="{{ cliente.nome }}">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder=" " value="{{ aluno.nome }}">
             <label for="nome">Nome Completo</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="cpf" name="cpf" data-mask="cpf" placeholder=" " value="{{ cliente.cpf }}">
+            <input type="text" class="form-control" id="cpf" name="cpf" data-mask="cpf" placeholder=" " value="{{ aluno.cpf }}">
             <label for="cpf">CPF</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="dataNascimento" name="data_nascimento" placeholder=" " value="{{ cliente.data_nascimento }}">
+            <input type="date" class="form-control" id="dataNascimento" name="data_nascimento" placeholder=" " value="{{ aluno.data_nascimento }}">
             <label for="dataNascimento">Data de Nascimento</label>
         </div>
         <div class="form-floating mb-3">
-            <textarea id="endereco" class="form-control" style="height: 120px" name="endereco" placeholder=" ">{{ cliente.endereco }}</textarea>
+            <textarea id="endereco" class="form-control" style="height: 120px" name="endereco" placeholder=" ">{{ aluno.endereco }}</textarea>
             <label for="endereco">Endereço</label>
         </div>
     </div>
     <div class="col-12 col-lg-6">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" placeholder=" " value="{{ cliente.email }}">
+            <input type="email" class="form-control" id="email" name="email" placeholder=" " value="{{ aluno.email }}">
             <label for="email">E-mail</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="telefone" name="telefone" data-mask="telefone" placeholder=" " value="{{ cliente.telefone }}">
+            <input type="text" class="form-control" id="telefone" name="telefone" data-mask="telefone" placeholder=" " value="{{ aluno.telefone }}">
             <label for="telefone">Telefone</label>
         </div>
         <div>

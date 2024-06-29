@@ -5,10 +5,10 @@ from fastapi.responses import HTMLResponse, JSONResponse
 
 from dtos.entrar_dto import EntrarDTO
 from util.html import ler_html
-from dtos.novo_cliente_dto import NovoClienteDTO
-from models.aluno_model import Cliente
-from repositories.cliente_repo import ClienteRepo
-from repositories.produto_repo import ProdutoRepo
+from dtos.novo_aluno_dto import NovoAlunoDTO
+from models.aluno_model import Aluno
+from repositories.aluno_repo import AlunoRepo
+from repositories.curso_repo import CursoRepo
 from util.auth import (
     conferir_senha,
     gerar_token,
@@ -31,12 +31,12 @@ async def get_html(arquivo: str):
 
 @router.get("/")
 async def get_root(request: Request):
-    produtos = ProdutoRepo.obter_todos()
+    cursos = CursoRepo.obter_todos()
     return templates.TemplateResponse(
         "pages/index.html",
         {
             "request": request,
-            "produtos": produtos,
+            "cursos": cursos,
         },
     )
 
@@ -58,12 +58,12 @@ async def get_cadastro(request: Request):
 
 
 @router.post("/post_cadastro", response_class=JSONResponse)
-async def post_cadastro(cliente_dto: NovoClienteDTO):
-    cliente_data = cliente_dto.model_dump(exclude={"confirmacao_senha"})
-    cliente_data["senha"] = obter_hash_senha(cliente_data["senha"])
-    novo_cliente = ClienteRepo.inserir(Cliente(**cliente_data))
-    if not novo_cliente or not novo_cliente.id:
-        raise HTTPException(status_code=400, detail="Erro ao cadastrar cliente.")
+async def post_cadastro(aluno_dto: NovoAlunoDTO):
+    aluno_data = aluno_dto.model_dump(exclude={"confirmacao_senha"})
+    aluno_data["senha"] = obter_hash_senha(aluno_data["senha"])
+    novo_aluno = AlunoRepo.inserir(Aluno(**aluno_data))
+    if not novo_aluno or not novo_aluno.id:
+        raise HTTPException(status_code=400, detail="Erro ao cadastrar aluno.")
     return {"redirect": {"url": "/cadastro_realizado"}}
 
 
@@ -91,11 +91,11 @@ async def get_entrar(
 
 @router.post("/post_entrar", response_class=JSONResponse)
 async def post_entrar(entrar_dto: EntrarDTO):
-    cliente_entrou = ClienteRepo.obter_por_email(entrar_dto.email)
+    aluno_entrou = AlunoRepo.obter_por_email(entrar_dto.email)
     if (
-        (not cliente_entrou)
-        or (not cliente_entrou.senha)
-        or (not conferir_senha(entrar_dto.senha, cliente_entrou.senha))
+        (not aluno_entrou)
+        or (not aluno_entrou.senha)
+        or (not conferir_senha(entrar_dto.senha, aluno_entrou.senha))
     ):
         return JSONResponse(
             content=create_validation_errors(
@@ -106,27 +106,27 @@ async def post_entrar(entrar_dto: EntrarDTO):
             status_code=status.HTTP_404_NOT_FOUND,
         )
     token = gerar_token()
-    if not ClienteRepo.alterar_token(cliente_entrou.id, token):
+    if not AlunoRepo.alterar_token(aluno_entrou.id, token):
         raise DatabaseError(
-            "Não foi possível alterar o token do cliente no banco de dados."
+            "Não foi possível alterar o token do aluno no banco de dados."
         )
     response = JSONResponse(content={"redirect": {"url": entrar_dto.return_url}})
     adicionar_mensagem_sucesso(
         response,
-        f"Olá, <b>{cliente_entrou.nome}</b>. Seja bem-vindo(a) à Loja Virtual!",
+        f"Olá, <b>{aluno_entrou.nome}</b>. Seja bem-vindo(a) à Loja Virtual!",
     )
     adicionar_cookie_auth(response, token)
     return response
 
 
-@router.get("/produto/{id:int}")
-async def get_produto(request: Request, id: int):
-    produto = ProdutoRepo.obter_um(id)
+@router.get("/curso/{id:int}")
+async def get_curso(request: Request, id: int):
+    curso = CursoRepo.obter_um(id)
     return templates.TemplateResponse(
-        "pages/produto.html",
+        "pages/curso.html",
         {
             "request": request,
-            "produto": produto,
+            "curso": curso,
         },
     )
 
@@ -139,14 +139,14 @@ async def get_buscar(
     tp: int = 6,
     o: int = 1,
 ):
-    produtos = ProdutoRepo.obter_busca(q, p, tp, o)
-    qtde_produtos = ProdutoRepo.obter_quantidade_busca(q)
-    qtde_paginas = math.ceil(qtde_produtos / float(tp))
+    cursos = CursoRepo.obter_busca(q, p, tp, o)
+    qtde_cursos = CursoRepo.obter_quantidade_busca(q)
+    qtde_paginas = math.ceil(qtde_cursos / float(tp))
     return templates.TemplateResponse(
         "pages/buscar.html",
         {
             "request": request,
-            "produtos": produtos,
+            "cursos": cursos,
             "quantidade_paginas": qtde_paginas,
             "tamanho_pagina": tp,
             "pagina_atual": p,

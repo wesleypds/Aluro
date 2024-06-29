@@ -21,23 +21,23 @@
         {% for i in itens %}
         <tr>
             <td>
-                <a href="/produto/{{i.id_produto}}">
-                    <img src="/static/img/produtos/{{'{:04d}'.format(i.id_produto)}}.jpg" style="height: 48px;"
+                <a href="/curso/{{i.id_curso}}">
+                    <img src="/static/img/cursos/{{'{:04d}'.format(i.id_curso)}}.jpg" style="height: 48px;"
                         class="rounded img-thumbnail">
                 </a>
             </td>
-            <td><a href="/produto/{{i.id_produto}}">{{ i.nome_produto }}</a></td>
-            <td>{{i.valor_produto}}</td>
+            <td><a href="/curso/{{i.id_curso}}">{{ i.nome_curso }}</a></td>
+            <td>{{i.valor_curso}}</td>
             <td>
-                <form action="/cliente/post_reduzir_item" method="post" class="d-inline-block">
-                    <input type="hidden" name="id_produto" value="{{i.id_produto}}">
+                <form action="/aluno/post_reduzir_item" method="post" class="d-inline-block">
+                    <input type="hidden" name="id_curso" value="{{i.id_curso}}">
                     <button class="btn btn-sm btn-danger">
                         <i class="bi bi-dash"></i>
                     </button>
                 </form>
                 <span class="mx-2">{{i.quantidade}}</span>
-                <form action="/cliente/post_aumentar_item" method="post" class="d-inline-block">
-                    <input type="hidden" name="id_produto" value="{{i.id_produto}}">
+                <form action="/aluno/post_aumentar_item" method="post" class="d-inline-block">
+                    <input type="hidden" name="id_curso" value="{{i.id_curso}}">
                     <button class="btn btn-sm btn-danger">
                         <i class="bi bi-plus"></i>
                     </button>
@@ -57,7 +57,7 @@
             <td colspan="4" class="text-end">Valor Total do Pedido:</td>
             <td><b>R$ 23.992,00</b></td>
             <td>
-                <a class="btn btn-danger btn-lg" href="/cliente/confirmacaopedido">Finalizar Pedido</a>
+                <a class="btn btn-danger btn-lg" href="/aluno/confirmacaopedido">Finalizar Pedido</a>
             </td>
         </tr>
     </tfoot>

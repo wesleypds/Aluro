@@ -31,14 +31,14 @@ def configurar_excecoes(app: FastAPI):
         )
         adicionar_mensagem_erro(
             response,
-            f"Você está logado como <b>{request.state.cliente.nome}</b> e seu perfil de usuário não tem autorização de acesso à página <b>{request.url.path}</b>. Entre com um usuário do perfil adequado para poder acessar a página em questão.",
+            f"Você está logado como <b>{request.state.aluno.nome}</b> e seu perfil de usuário não tem autorização de acesso à página <b>{request.url.path}</b>. Entre com um usuário do perfil adequado para poder acessar a página em questão.",
         )
         return response
 
     @app.exception_handler(404)
     async def page_not_found_exception_handler(request: Request, _ ):
         return templates.TemplateResponse(
-            "pages/404.html", {"request": request, "cliente": request.state.cliente}
+            "pages/404.html", {"request": request, "aluno": request.state.aluno}
         )
 
     @app.exception_handler(HTTPException)
@@ -46,7 +46,7 @@ def configurar_excecoes(app: FastAPI):
         logger.error("Ocorreu uma exceção não tratada: %s", ex)
         view_model = {
             "request": request,
-            "cliente": request.state.cliente,
+            "aluno": request.state.aluno,
             "detail": "Erro na requisição HTTP.",
         }
         return templates.TemplateResponse(
@@ -58,7 +58,7 @@ def configurar_excecoes(app: FastAPI):
         logger.error("Ocorreu uma exceção não tratada: %s", ex)
         view_model = {
             "request": request,
-            "cliente": request.state.cliente,
+            "aluno": request.state.aluno,
             "detail": "Erro interno do servidor.",
         }
         return templates.TemplateResponse("pages/erro.html", view_model, status_code=500)

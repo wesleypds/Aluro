@@ -18,15 +18,9 @@ SQL_OBTER_POR_PEDIDO = """
     WHERE id_curso=?
 """
 
-SQL_OBTER_QUANTIDADE_POR_PRODUTO = """
-    SELECT quantidade
-    FROM aluno_curso
-    WHERE id_curso=? AND id_aluno=?
-"""
-
 SQL_ALTERAR_VALOR_PRODUTO = """
     UPDATE aluno_curso
-    SET valor_produto=?
+    SET valor_curso=?
     WHERE id_curso=? AND id_aluno=?
 """
 

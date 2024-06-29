@@ -1,12 +1,12 @@
 import json
 import sqlite3
 from typing import List, Optional
-from models.aluno_model import Cliente
+from models.aluno_model import Aluno
 from sql.aluno_sql import *
 from util.database import obter_conexao
 
 
-class ClienteRepo:
+class AlunoRepo:
 
     @classmethod
     def criar_tabela(cls):
@@ -15,57 +15,56 @@ class ClienteRepo:
             cursor.execute(SQL_CRIAR_TABELA)
 
     @classmethod
-    def inserir(cls, cliente: Cliente) -> Optional[Cliente]:
+    def inserir(cls, aluno: Aluno) -> Optional[Aluno]:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 cursor.execute(
                     SQL_INSERIR,
                     (
-                        cliente.nome,
-                        cliente.cpf,
-                        cliente.data_nascimento,
-                        cliente.endereco,
-                        cliente.telefone,
-                        cliente.email,
-                        cliente.senha,
-                        cliente.admin,
+                        aluno.nome,
+                        aluno.cpf,
+                        aluno.data_nascimento,
+                        aluno.endereco,
+                        aluno.telefone,
+                        aluno.email,
+                        aluno.senha,
                     ),
                 )
                 if cursor.rowcount > 0:
-                    cliente.id = cursor.lastrowid
-                    return cliente
+                    aluno.id = cursor.lastrowid
+                    return aluno
         except sqlite3.Error as ex:
             print(ex)
             return None
 
     @classmethod
-    def obter_todos(cls) -> List[Cliente]:
+    def obter_todos(cls) -> List[Aluno]:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 tuplas = cursor.execute(SQL_OBTER_TODOS).fetchall()
-                clientes = [Cliente(*t) for t in tuplas]
-                return clientes
+                alunos = [Aluno(*t) for t in tuplas]
+                return alunos
         except sqlite3.Error as ex:
             print(ex)
             return None
 
     @classmethod
-    def alterar(cls, cliente: Cliente) -> bool:
+    def alterar(cls, aluno: Aluno) -> bool:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 cursor.execute(
                     SQL_ALTERAR,
                     (
-                        cliente.nome,
-                        cliente.cpf,
-                        cliente.data_nascimento,
-                        cliente.endereco,
-                        cliente.telefone,
-                        cliente.email,
-                        cliente.id,
+                        aluno.nome,
+                        aluno.cpf,
+                        aluno.data_nascimento,
+                        aluno.endereco,
+                        aluno.telefone,
+                        aluno.email,
+                        aluno.id,
                     ),
                 )
                 return cursor.rowcount > 0
@@ -85,13 +84,13 @@ class ClienteRepo:
             return False
 
     @classmethod
-    def obter_por_id(cls, id: int) -> Optional[Cliente]:
+    def obter_por_id(cls, id: int) -> Optional[Aluno]:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 tupla = cursor.execute(SQL_OBTER_POR_ID, (id,)).fetchone()
-                cliente = Cliente(*tupla)
-                return cliente
+                aluno = Aluno(*tupla)
+                return aluno
         except sqlite3.Error as ex:
             print(ex)
             return None
@@ -108,15 +107,15 @@ class ClienteRepo:
             return None
 
     @classmethod
-    def inserir_clientes_json(cls, arquivo_json: str):
-        if ClienteRepo.obter_quantidade() == 0:
+    def inserir_alunos_json(cls, arquivo_json: str):
+        if AlunoRepo.obter_quantidade() == 0:
             with open(arquivo_json, "r", encoding="utf-8") as arquivo:
-                clientes = json.load(arquivo)
-                for cliente in clientes:
-                    ClienteRepo.inserir(Cliente(**cliente))
+                alunos = json.load(arquivo)
+                for aluno in alunos:
+                    AlunoRepo.inserir(Aluno(**aluno))
 
     @classmethod
-    def obter_busca(cls, termo: str, pagina: int, tamanho_pagina: int) -> List[Cliente]:
+    def obter_busca(cls, termo: str, pagina: int, tamanho_pagina: int) -> List[Aluno]:
         termo = "%" + termo + "%"
         offset = (pagina - 1) * tamanho_pagina
         try:
@@ -125,8 +124,8 @@ class ClienteRepo:
                 tuplas = cursor.execute(
                     SQL_OBTER_BUSCA, (termo, termo, tamanho_pagina, offset)
                 ).fetchall()
-                clientes = [Cliente(*t) for t in tuplas]
-                return clientes
+                alunos = [Aluno(*t) for t in tuplas]
+                return alunos
         except sqlite3.Error as ex:
             print(ex)
             return None
@@ -146,14 +145,14 @@ class ClienteRepo:
             return None
 
     @classmethod
-    def obter_por_email(cls, email: str) -> Optional[Cliente]:
+    def obter_por_email(cls, email: str) -> Optional[Aluno]:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 tupla = cursor.execute(SQL_OBTER_POR_EMAIL, (email,)).fetchone()
                 if tupla:
-                    cliente = Cliente(*tupla)
-                    return cliente
+                    aluno = Aluno(*tupla)
+                    return aluno
                 else:
                     return None
         except sqlite3.Error as ex:
@@ -172,14 +171,14 @@ class ClienteRepo:
             return False
 
     @classmethod
-    def obter_por_token(cls, token: str) -> Optional[Cliente]:
+    def obter_por_token(cls, token: str) -> Optional[Aluno]:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 tupla = cursor.execute(SQL_OBTER_POR_TOKEN, (token,)).fetchone()
                 if tupla:
-                    cliente = Cliente(*tupla)
-                    return cliente
+                    aluno = Aluno(*tupla)
+                    return aluno
                 else:
                     return None
         except sqlite3.Error as ex:
