@@ -14,17 +14,11 @@
                 <p class="card-text text-center texto-3-linhas">
                     {{c.descricao}}
                 </p>
-                <p class="lead text-danger text-center mt-auto">
-                    Categoria:
-                    {% for cate in categorias %}
-                    {{ cate.nome }} 
-                    {% endfor %}
-                </p>
                 <form method="post" action="/aluno/post_adicionar_carrinho">
                     <p class="text-center mb-0">
                         <input type="hidden" name="id_curso" value="{{c.id}}">
                         <button class="btn btn-danger" type="submit">
-                            <i class="bi bi-cart-plus"></i>
+                            <i class="bi bi-bookmark-plus"></i>
                             Se inscrever
                         </button>
                     </p>
