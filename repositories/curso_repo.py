@@ -1,8 +1,10 @@
 import json
+import pdb
 import sqlite3
 from typing import List, Optional
 from models.curso_model import Curso
 from sql.curso_sql import *
+from repositories.categoria_repo import *
 from util.database import obter_conexao
 import shutil
 from pathlib import Path
@@ -102,15 +104,33 @@ class CursoRepo:
     ) -> List[Curso]:
         termo = "%" + termo + "%"
         offset = (pagina - 1) * tamanho_pagina
-        SQL_OBTER_BUSCA_ORDENADA = SQL_OBTER_BUSCA.replace("#1", "nome")
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
-                tuplas = cursor.execute(
-                    SQL_OBTER_BUSCA_ORDENADA, (termo, termo, tamanho_pagina, offset)
-                ).fetchall()
-                cursos = [Curso(*t) for t in tuplas]
-                return cursos
+                if ordem == 1:  
+                    tuplas = cursor.execute(
+                        SQL_OBTER_BUSCA, (tamanho_pagina, offset)
+                    ).fetchall()
+                    cursos = [Curso(*t) for t in tuplas]
+                    return cursos
+                else:
+                    match (ordem):
+                        case 2:
+                            termo = "%"+ "Front-End" +"%"
+                        case 3:
+                            termo = "%"+ "Back-End" +"%"
+                        case 4:
+                            termo = "%"+ "Eletrônica" +"%"
+                    tuplas = cursor.execute(
+                        SQL_OBTER_POR_CATEGORIA, (termo, tamanho_pagina, offset)
+                    ).fetchall()
+                    categorias = [Categoria(*t) for t in tuplas]
+                    cursos = []
+                    for categoria in categorias:
+                        curso = CursoRepo.obter_um(categoria.id_curso)
+                        if curso:
+                            cursos.append(curso) 
+                    return cursos
         except sqlite3.Error as ex:
             print(ex)
             return None
