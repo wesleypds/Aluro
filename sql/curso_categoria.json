@@ -1,0 +1,30 @@
+[
+    {
+        "id_curso": 1,
+        "id_categoria": 3
+    },
+    {
+        "id_curso": 2,
+        "id_categoria": 1
+    },
+    {
+        "id_curso": 2,
+        "id_categoria": 2
+    },
+    {
+        "id_curso": 3,
+        "id_categoria": 1
+    },
+    {
+        "id_curso": 4,
+        "id_categoria": 1
+    },
+    {
+        "id_curso": 5,
+        "id_categoria": 2
+    },
+    {
+        "id_curso": 6,
+        "id_categoria": 3
+    }
+]

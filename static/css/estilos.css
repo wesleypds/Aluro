@@ -1,0 +1,91 @@
+.page-link {
+    color: var(--bs-danger);
+    background-color: var(--bs-white);
+    border: 1px solid var(--bs-danger);
+}
+
+.page-link:hover {
+    color: var(--bs-dark);
+    background-color: var(--bs-light);
+    border: 1px solid var(--bs-danger);
+}
+
+.page-link.active,
+.page-link.active:hover {
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+    color: var(--bs-white);
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.texto-3-linhas {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.texto-1-linha {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.home-section {
+    background-image: url('/static/img/fundo_home.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 80px 0;
+    text-align: left;
+    min-height: 100vh; /* Garante que a seção ocupe toda a altura da viewport */
+    width: 100vw; /* Garante que a seção ocupe toda a largura da viewport */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-painel {
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-image: linear-gradient(to bottom right, #ff99cc, #9966cc);
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.card-painel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-image: linear-gradient(to bottom right, #ff66a3, #8533a6);
+}
+
+.card-painel .card-body {
+    padding: 20px;
+}
+
+.card-painel-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-painel-text {
+    font-size: 1em;
+}
+
+
