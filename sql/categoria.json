@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nome": "Front-End"
+    },
+    {
+        "id": 2,
+        "nome": "Back-End"
+    },
+    {
+        "id": 3,
+        "nome": "Eletrônica"
+    }
+]
