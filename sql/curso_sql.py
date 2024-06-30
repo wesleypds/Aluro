@@ -42,8 +42,7 @@ SQL_OBTER_QUANTIDADE = """
 SQL_OBTER_BUSCA = """
     SELECT id, nome, descricao, url
     FROM curso
-    WHERE nome LIKE ? OR descricao LIKE ?
-    ORDER BY #1
+    ORDER BY nome
     LIMIT ? OFFSET ?
 """
 

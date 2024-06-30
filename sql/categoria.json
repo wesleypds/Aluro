@@ -1,14 +1,32 @@
 [
     {
         "id": 1,
-        "nome": "Front-End"
+        "nome": "Front-End",
+        "id_curso": 2
     },
     {
         "id": 2,
-        "nome": "Back-End"
+        "nome": "Front-End",
+        "id_curso": 3
     },
     {
         "id": 3,
-        "nome": "Eletrônica"
+        "nome": "Front-End",
+        "id_curso": 4
+    },
+    {
+        "id": 4,
+        "nome": "Back-End",
+        "id_curso": 5
+    },
+    {
+        "id": 5,
+        "nome": "Eletrônica",
+        "id_curso": 1
+    },
+    {
+        "id": 6,
+        "nome": "Eletrônica",
+        "id_curso": 6
     }
 ]

@@ -7,3 +7,4 @@ from models.curso_model import Curso
 class Categoria:
     id: Optional[int] = None
     nome: Optional[str] = None
+    id_curso: Optional[int] = None

@@ -27,7 +27,10 @@
             <input type="hidden" name="q" value="{{ termo_busca }}">
             <input type="hidden" name="tp" value="{{ tamanho_pagina }}">            
             <select name="o" class="form-control" onchange="this.form.submit()">
-                <option value="1" {{ 'selected' if ordem == 1 else '' }}>Nome</option>
+                <option value="1" {{ 'selected' if ordem == 1 else '' }}>Todas Categorias</option>
+                <option value="2" {{ 'selected' if ordem == 2 else '' }}>Front-End</option>
+                <option value="3" {{ 'selected' if ordem == 3 else '' }}>Back-End</option>
+                <option value="4" {{ 'selected' if ordem == 4 else '' }}>Eletrônico</option>
             </select>
         </form>
     </div>
