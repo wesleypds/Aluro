@@ -55,6 +55,13 @@ async def get_cadastro(request: Request):
         "pages/cadastro.html",
         {"request": request},
     )
+    
+@router.get("/sobre")
+async def get_grupo(request: Request):
+    return templates.TemplateResponse(
+        "pages/sobre.html",
+        {"request": request},
+    )
 
 
 @router.post("/post_cadastro", response_class=JSONResponse)

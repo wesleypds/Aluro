@@ -1,14 +1,14 @@
 {% extends "pages/base.html" %}
-{% block subtitulo %}Detalhes do Curso {{curso.nome}}{% endblock %}
+{% block subtitulo %}Detalhes do Curso {{ curso.nome }}{% endblock %}
 {% block conteudo %}
-<h1 class="display-5"><b>{{curso.nome}}</b></h1>
+<h1 class="display-5"><b>{{ curso.nome }}</b></h1>
 <hr>
 <div class="row">
     <div class="col-4">
-        <img src="/static/img/cursos/{{'{:04d}'.format(curso.id)}}.jpg" class="img-thumbnail">
+        <img src="/static/img/cursos/{{ '{:04d}'.format(curso.id) }}.png" class="img-thumbnail">
     </div>
     <div class="col-8">
-        <p class="lead texto-1-linha">{{curso.descricao}}</p>
+        <p class="lead texto-1-linha">{{ curso.descricao }}</p>
         <ul class="nav nav-tabs mb-2">
             <li class="nav-item">
                 <a class="nav-link text-dark active" href="#" data-bs-toggle="tab"
@@ -17,18 +17,19 @@
         </ul>
         <div class="tab-content" id="tab-content">
             <div class="tab-pane active" id="divDescricao">
-                {{curso.descricao}}
+                {{ curso.descricao }}
             </div>
             <div class="tab-pane" id="divEspecs">
-                {{curso.descricao}}
+                {{ curso.descricao }}
             </div>
         </div>
         <p></p>
-        <form method="post" action="/aluno/post_adicionar_carrinho">
-            <input type="hidden" name="id_curso" value="{{curso.id}}">
-            <button class="btn btn-danger btn-lg">
+        <form method="post" action="/aluno/post_adicionar_curso">
+            <input type="hidden" name="id_curso" value="{{ curso.id }}">
+            <input type="hidden" name="id_aluno" value="{{ request.state.aluno.id }}">
+            <button class="btn btn-danger btn-lg" type="submit">
                 <i class="bi bi-bookmark-plus"></i>
-                Se Increver
+                Se Inscrever
             </button>
         </form>
     </div>
