@@ -2,21 +2,22 @@
     {% for c in cursos %}
     <div class="col">
         <div class="card h-100">
-            <a href="/curso/{{c.id}}">
-                <img src="/static/img/cursos/{{'{:04d}'.format(c.id)}}.png" class="card-img-top w-100">
+            <a href="/curso/{{ c.id }}">
+                <img src="/static/img/cursos/{{ '{:04d}'.format(c.id) }}.png" class="card-img-top w-100">
             </a>
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title text-center">
-                    <a href="/curso/{{c.id}}" class="text-decoration-none text-black">
-                        {{c.nome}}
+                    <a href="/curso/{{ c.id }}" class="text-decoration-none text-black">
+                        {{ c.nome }}
                     </a>
                 </h5>
                 <p class="card-text text-center texto-3-linhas">
-                    {{c.descricao}}
+                    {{ c.descricao }}
                 </p>
                 <form method="post" action="/aluno/post_adicionar_curso">
                     <p class="text-center mb-0">
-                        <input type="hidden" name="id_curso" value="{{c.id}}">
+                        <input type="hidden" name="id_curso" value="{{ c.id }}">
+                        <input type="hidden" name="id_aluno" value="{{ request.state.aluno.id }}">
                         <button class="btn btn-danger" type="submit">
                             <i class="bi bi-bookmark-plus"></i>
                             Se inscrever
