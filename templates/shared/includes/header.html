@@ -2,7 +2,7 @@
     <div class="container">
         <a class="navbar-brand" href="/">
             <!-- <img src="/static/img/logotipo.svg" style="height: 64px;"> -->
-             <span style="font-size: 50px; font-family:Arial, Helvetica, sans-serif;">Aluro</span>
+            <span style="font-size: 50px; font-family:Arial, Helvetica, sans-serif;">Aluro</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
             <span class="navbar-toggler-icon"></span>
@@ -16,15 +16,18 @@
                 <li class="nav-item">
                     <a class="nav-link {{ 'active' if pagina_atual == '/contato' }}" href="/contato">Contato</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'active' if pagina_atual == '/sobre' }}" href="/sobre">Sobre</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
                 {% if not aluno or not aluno.nome -%}
                 <li class="nav-item">
-                    <a class="nav-link {{ 'active' if pagina_atual == '/cadastro' }}" href="/cadastro">Quero me cadastrar!</a>
+                    <a class="nav-link {{ 'active' if pagina_atual == '/cadastro' }}" href="/cadastro">Quero me
+                        cadastrar!</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ 'active' if pagina_atual == '/entrar' }}" href="/entrar">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ 'active' if pagina_atual == '/entrar' }}" href="/sobre">Sobre</a>
                 </li>
                 {%- else: -%}
                 <li class="nav-item dropdown">
@@ -32,9 +35,12 @@
                         Olá, <b>{{ aluno.nome }}</b>!
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item {{ 'active' if pagina_atual == '/aluno/curso' }}" href="/aluno/curso">Meus Cursos</a></li>
-                        <li><a class="dropdown-item  {{ 'active' if pagina_atual == '/aluno/cadastro' }}" href="/aluno/cadastro">Meu Cadastro</a></li>
-                        <li><a class="dropdown-item  {{ 'active' if pagina_atual == '/aluno/senha' }}" href="/aluno/senha">Alterar Senha</a></li>
+                        <li><a class="dropdown-item {{ 'active' if pagina_atual == '/aluno/curso' }}"
+                                href="/aluno/curso">Meus Cursos</a></li>
+                        <li><a class="dropdown-item  {{ 'active' if pagina_atual == '/aluno/cadastro' }}"
+                                href="/aluno/cadastro">Meu Cadastro</a></li>
+                        <li><a class="dropdown-item  {{ 'active' if pagina_atual == '/aluno/senha' }}"
+                                href="/aluno/senha">Alterar Senha</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -48,5 +54,6 @@
                 <button class="btn btn-danger" type="submit">Buscar</button>
             </form>
         </div>
+
     </div>
 </nav>
