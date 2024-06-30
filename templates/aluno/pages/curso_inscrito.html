@@ -1,0 +1,45 @@
+{% extends "pages/base.html" %}
+{% block subtitulo %}Seus Cursos{% endblock %}
+{% block conteudo %}
+<h1 class="display-5"><b>Seus Cursos</b></h1>
+<hr>
+{% if not itens: %}
+<h3>Você não está matrículado em um curso.</h3>
+{% else: %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in itens %}
+        <tr>
+            <td>
+                <a href="/curso/{{i.id}}">
+                    <img src="/static/img/cursos/{{'{:04d}'.format(i.id)}}.png" style="height: 48px;"
+                        class="rounded img-thumbnail">
+                </a>
+            </td>
+            <td><a href="/curso/{{i.id}}">{{ i.nome }}</a></td>
+            <td>
+                <form action="/aluno/post_visualizar" method="post" class="d-inline-block">
+                    <input type="hidden" name="id_curso" value="{{i.id}}">
+                    <button class="btn btn-sm btn-info">
+                        <i>Visualizar</i>
+                    </button>
+                </form>
+                <form action="/aluno/post_desiscrever" method="post" class="d-inline-block">
+                    <input type="hidden" name="id_curso" value="{{i.id}}">
+                    <button class="btn btn-sm btn-danger">
+                        <i>Desinscrever</i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

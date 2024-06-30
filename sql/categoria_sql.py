@@ -4,7 +4,7 @@ SQL_CRIAR_TABELA = """
         nome TEXT NOT NULL,
         id_curso INTEGER NOT NULL,
         FOREIGN KEY (id_curso) REFERENCES curso(id)
-    );
+    )
 """
 
 SQL_INSERIR = """
@@ -20,5 +20,6 @@ SQL_OBTER_POR_CATEGORIA = """
     SELECT *
     FROM categoria
     WHERE nome LIKE ?
+    ORDER BY nome
     LIMIT ? OFFSET ?
 """

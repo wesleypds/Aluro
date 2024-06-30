@@ -1,8 +1,7 @@
 from fastapi import Depends, FastAPI
 from fastapi.staticfiles import StaticFiles
+from repositories.aluno_curso_repo import AlunoCursoRepo
 from repositories.aluno_repo import AlunoRepo
-# from repositories.item_pedido_repo import ItemPedidoRepo
-# from repositories.pedido_repo import PedidoRepo
 from repositories.categoria_repo import CategoriaRepo
 from repositories.curso_repo import CursoRepo
 from routes import aluno_routes, main_routes
@@ -15,8 +14,7 @@ AlunoRepo.criar_tabela()
 AlunoRepo.inserir_alunos_json("sql/aluno.json")
 CategoriaRepo.criar_tabela()
 CategoriaRepo.inserir_categorias_json("sql/categoria.json")
-# PedidoRepo.criar_tabela()
-# ItemPedidoRepo.criar_tabela()
+AlunoCursoRepo.criar_tabela()
 app = FastAPI(dependencies=[Depends(checar_permissao)])
 app.mount(path="/static", app=StaticFiles(directory="static"), name="static")
 app.middleware(middleware_type="http")(middleware_autenticacao)

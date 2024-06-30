@@ -11,11 +11,12 @@ from pathlib import Path
 
 
 class CursoRepo:
+    
     @classmethod
     def criar_tabela(cls):
         with obter_conexao() as conexao:
             cursor = conexao.cursor()
-            cursor.execute(SQL_CRIAR_TABELA)
+            cursor.execute(SQL_CRIAR_TABELA_CURSO)
 
     @classmethod
     def inserir(cls, curso: Curso) -> Optional[Curso]:
@@ -23,7 +24,7 @@ class CursoRepo:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 cursor.execute(
-                    SQL_INSERIR,
+                    SQL_INSERIR_CURSO,
                     (curso.nome, curso.descricao, curso.url),
                 )
                 if cursor.rowcount > 0:
@@ -38,7 +39,7 @@ class CursoRepo:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
-                tuplas = cursor.execute(SQL_OBTER_TODOS).fetchall()
+                tuplas = cursor.execute(SQL_OBTER_TODOS_CURSOS).fetchall()
                 cursos = [Curso(*t) for t in tuplas]
                 return cursos
         except sqlite3.Error as ex:
@@ -51,7 +52,7 @@ class CursoRepo:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 cursor.execute(
-                    SQL_ALTERAR,
+                    SQL_ALTERAR_CURSO,
                     (
                         curso.nome,
                         curso.descricao,
@@ -69,7 +70,7 @@ class CursoRepo:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
-                cursor.execute(SQL_EXCLUIR, (id,))
+                cursor.execute(SQL_EXCLUIR_CURSO, (id,))
                 return cursor.rowcount > 0
         except sqlite3.Error as ex:
             print(ex)
@@ -80,7 +81,7 @@ class CursoRepo:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
-                tupla = cursor.execute(SQL_OBTER_UM, (id,)).fetchone()
+                tupla = cursor.execute(SQL_OBTER_UM_CURSO, (id,)).fetchone()
                 curso = Curso(*tupla)
                 return curso
         except sqlite3.Error as ex:
@@ -92,7 +93,7 @@ class CursoRepo:
         try:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
-                tupla = cursor.execute(SQL_OBTER_QUANTIDADE).fetchone()
+                tupla = cursor.execute(SQL_OBTER_QUANTIDADE_CURSO).fetchone()
                 return int(tupla[0])
         except sqlite3.Error as ex:
             print(ex)
@@ -109,7 +110,7 @@ class CursoRepo:
                 cursor = conexao.cursor()
                 if ordem == 1:  
                     tuplas = cursor.execute(
-                        SQL_OBTER_BUSCA, (tamanho_pagina, offset)
+                        SQL_OBTER_BUSCA_CURSO, (termo, termo, tamanho_pagina, offset)
                     ).fetchall()
                     cursos = [Curso(*t) for t in tuplas]
                     return cursos
@@ -142,7 +143,7 @@ class CursoRepo:
             with obter_conexao() as conexao:
                 cursor = conexao.cursor()
                 tupla = cursor.execute(
-                    SQL_OBTER_QUANTIDADE_BUSCA, (termo, termo)
+                    SQL_OBTER_QUANTIDADE_BUSCA_CURSO, (termo, termo)
                 ).fetchone()
                 return int(tupla[0])
         except sqlite3.Error as ex:
@@ -156,19 +157,19 @@ class CursoRepo:
                 cursos = json.load(arquivo)
                 for curso in cursos:
                     CursoRepo.inserir(Curso(**curso))
-            cls.transfer_images("/static/img/cursos/inserir", "/static/img/cursos")
+    #         cls.transferir_imagens("/static/img/cursos/inserir", "/static/img/cursos")
 
-    @classmethod
-    def transferir_imagens(cls, pasta_origem, pasta_destino):
-        path_origem = Path(pasta_origem)
-        path_destino = Path(pasta_destino)
-        if not path_origem.exists() or not path_origem.is_dir():
-            print(f"Pasta de origem {pasta_origem} não existe ou não é um diretório.")
-            return
-        if not path_destino.exists() or not path_destino.is_dir():
-            print(f"Pasta de destino {pasta_destino} não existe ou não é um diretório.")
-            return
-        for arquivo_imagem in path_origem.glob("*"):
-            if arquivo_imagem.is_file():
-                path_arquivo_destino = path_destino / arquivo_imagem.name
-                shutil.copy2(arquivo_imagem, path_arquivo_destino)
+    # @classmethod
+    # def transferir_imagens(cls, pasta_origem, pasta_destino):
+    #     path_origem = Path(pasta_origem)
+    #     path_destino = Path(pasta_destino)
+    #     if not path_origem.exists() or not path_origem.is_dir():
+    #         print(f"Pasta de origem {pasta_origem} não existe ou não é um diretório.")
+    #         return
+    #     if not path_destino.exists() or not path_destino.is_dir():
+    #         print(f"Pasta de destino {pasta_destino} não existe ou não é um diretório.")
+    #         return
+    #     for arquivo_imagem in path_origem.glob("*"):
+    #         if arquivo_imagem.is_file():
+    #             path_arquivo_destino = path_destino / arquivo_imagem.name
+    #             shutil.copy2(arquivo_imagem, path_arquivo_destino)
