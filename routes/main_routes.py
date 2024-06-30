@@ -120,7 +120,7 @@ async def post_entrar(entrar_dto: EntrarDTO):
     response = JSONResponse(content={"redirect": {"url": entrar_dto.return_url}})
     adicionar_mensagem_sucesso(
         response,
-        f"Olá, <b>{aluno_entrou.nome}</b>. Seja bem-vindo(a) à Loja Virtual!",
+        f"Olá, <b>{aluno_entrou.nome}</b>. Seja bem-vindo(a) ao Aluro, a sua plataforma de melhores cursos!",
     )
     adicionar_cookie_auth(response, token)
     return response
