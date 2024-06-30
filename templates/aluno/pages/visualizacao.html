@@ -3,8 +3,8 @@
 {% block conteudo %}
 <h1 class="display-5"><b>Curso: {{ curso.nome }}</b></h1>
 <hr>
-<div class="video-container">
-    <iframe src="https://www.youtube.com/embed/{{curso.url}}" 
+<div class="video-container" style="margin-bottom: 40px;">
+    <iframe src="{{ curso.url }}" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen></iframe>
