@@ -1,0 +1,12 @@
+{% extends "pages/base.html" %}
+{% block subtitulo %}Seu Curso{% endblock %}
+{% block conteudo %}
+<h1 class="display-5"><b>Curso: {{ curso.nome }}</b></h1>
+<hr>
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/{{curso.url}}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+</div>
+{% endblock %}

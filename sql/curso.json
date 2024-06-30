@@ -3,36 +3,36 @@
         "id": 1,
         "nome": "Arduino do Básico ao Avançado",
         "descricao": "O Arduino é uma plataforma de prototipagem eletrônica de código aberto que combina uma placa de hardware com um microcontrolador e um ambiente de desenvolvimento de software fácil de usar. Criada em 2005, a plataforma permite a construção de projetos interativos variados, desde sistemas de iluminação simples até robôs complexos e dispositivos IoT. Seu design acessível e de baixo custo, aliado à vasta comunidade global de usuários e à natureza de código aberto, facilita a inovação e o aprendizado em eletrônica e programação para estudantes, hobistas e profissionais. A flexibilidade do Arduino, suportada por diversas placas e módulos complementares, faz dele uma ferramenta central na democratização da tecnologia e na prototipagem rápida.",
-        "url": "https://youtu.be/3c8mXZUHCQY?si=bReXu3-Ex0zCH_9k"
+        "url": "bReXu3-Ex0zCH_9k"
     },
     {
         "id": 2,
         "nome": "Saindo do Zero com Django",
         "descricao": "O Django é um poderoso framework de desenvolvimento web em Python, criado para facilitar a construção de aplicações web robustas e escaláveis. Lançado em 2005, o Django adota a filosofia batteries included, fornecendo uma ampla gama de funcionalidades prontas para uso, como um sistema de autenticação, um ORM (Object-Relational Mapping) eficiente, e uma interface administrativa automática. Projetado para incentivar o desenvolvimento rápido e limpo, ele segue o princípio DRY (Don't Repeat Yourself), minimizando a redundância de código. Com sua arquitetura baseada em MVT (Model-View-Template), o Django facilita a separação de preocupações e promove uma estrutura modular que é fácil de manter e expandir. Além disso, sua natureza de código aberto e a extensa documentação tornam o Django uma escolha popular entre desenvolvedores de todos os níveis, desde iniciantes até profissionais experientes, ajudando a criar tudo, desde sites pessoais simples até complexos sistemas de gerenciamento de conteúdo e aplicações empresariais.",
-        "url": "https://youtu.be/DNGI5aD9MJs?si=_zpBu2U5e0yON5GK"
+        "url": "_zpBu2U5e0yON5GK"
     },
     {
         "id": 3,
         "nome": "HTML5 & CSS3 Para Iniciantes",
         "descricao": "HTML (HyperText Markup Language) e CSS (Cascading Style Sheets) são as tecnologias fundamentais para a criação de websites. O HTML é a linguagem de marcação usada para estruturar o conteúdo das páginas web, definindo elementos como títulos, parágrafos, links, imagens e formulários. Ele estabelece a base da página, permitindo que o navegador entenda a organização e o tipo de cada conteúdo. Já o CSS é a linguagem de estilo utilizada para controlar a aparência visual do HTML, permitindo que os desenvolvedores personalizem aspectos como cores, fontes, layout e espaçamento. O CSS introduz a capacidade de aplicar estilos de forma consistente e eficiente, garantindo que as páginas web sejam atraentes e responsivas. Juntos, HTML e CSS permitem a construção de interfaces web ricas e interativas, combinando estrutura e estética para criar experiências de usuário envolventes e acessíveis em qualquer dispositivo.",
-        "url": "https://www.youtube.com/live/w7sIMxxVELs?si=WX91RtZlFp8XBK-X"
+        "url": "WX91RtZlFp8XBK-X"
     },
     {
         "id": 4,
         "nome": "JavaScript Para Iniciantes",
         "descricao": "O JavaScript é uma linguagem de programação dinâmica e amplamente utilizada que desempenha um papel fundamental no desenvolvimento web moderno. Criada em 1995, inicialmente para adicionar interatividade a páginas web, ela evoluiu para se tornar uma linguagem versátil que roda tanto no lado do aluno quanto no servidor, com a ajuda de tecnologias como Node.js. No lado do aluno, o JavaScript permite criar interfaces de usuário ricas e interativas, manipular elementos HTML e CSS em tempo real, e se comunicar com servidores para atualizar conteúdo sem recarregar a página, utilizando técnicas como AJAX. No lado do servidor, com frameworks como Express.js, ele facilita a criação de aplicações web escaláveis e eficientes. Sua popularidade é amplamente suportada por uma vasta comunidade de desenvolvedores e um ecossistema robusto de bibliotecas e frameworks, como React, Angular e Vue.js, que simplificam a criação de aplicações complexas. A flexibilidade e o desempenho do JavaScript o tornam uma escolha essencial para qualquer desenvolvedor web, desde iniciantes até profissionais, consolidando seu papel como a linguagem principal da web.",
-        "url": "https://youtu.be/i6Oi-YtXnAU?si=rVTfLB2bZlki6V7N"
+        "url": "rVTfLB2bZlki6V7N"
     },
     {
         "id": 5,
         "nome": "NodeJS Para Iniciantes",
         "descricao": "Node.js é um ambiente de execução de código JavaScript do lado do servidor, criado em 2009, que permite o desenvolvimento de aplicações de alta performance e escaláveis. Construído sobre o motor V8 do Google Chrome, o Node.js é conhecido por sua arquitetura orientada a eventos e seu modelo de I/O não bloqueante, que permitem a manipulação eficiente de múltiplas conexões simultâneas. Este design o torna ideal para aplicações de tempo real, como chats, jogos online, ou APIs que exigem alta taxa de requisições. Com um ecossistema vasto e em crescimento, suportado pelo gerenciador de pacotes npm (Node Package Manager), o Node.js facilita o desenvolvimento com uma rica biblioteca de módulos reutilizáveis. Seu uso generalizado, aliado à sua natureza de código aberto e à comunidade ativa, fez do Node.js uma escolha popular entre desenvolvedores para construir desde pequenos projetos pessoais até grandes aplicações corporativas.",
-        "url": "https://youtu.be/IOfDoyP1Aq0?si=NlDPqzUX4WDCuNhO"
+        "url": "NlDPqzUX4WDCuNhO"
     },
     {
         "id": 6,
         "nome": "RaspberryPi Para Iniciantes",
         "descricao": "O Raspberry Pi é um computador de placa única, de baixo custo e alto desempenho, criado para promover a educação em computação e incentivar a inovação em projetos eletrônicos. Lançado pela Fundação Raspberry Pi em 2012, o dispositivo é do tamanho de um cartão de crédito e pode executar sistemas operacionais baseados em Linux, oferecendo uma plataforma completa para aprendizado e desenvolvimento. Com portas USB, HDMI, GPIO (General Purpose Input/Output) e conectividade de rede, o Raspberry Pi pode ser usado em uma ampla gama de aplicações, desde servidores domésticos e media centers até projetos de automação residencial e prototipagem de dispositivos IoT (Internet das Coisas). Sua acessibilidade, combinada com uma grande comunidade global e vasta biblioteca de recursos, o torna uma ferramenta popular tanto em ambientes educacionais quanto entre entusiastas e profissionais, facilitando a exploração e a criação de soluções tecnológicas inovadoras.",
-        "url": "https://youtu.be/ra6kNSIB1uA?si=oeWh4zwkZiN7_wh6"
+        "url": "oeWh4zwkZiN7_wh6"
     }
 ]

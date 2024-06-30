@@ -121,3 +121,11 @@ async def post_desiscrever(request: Request, id_curso: int = Form(0)):
     response = RedirectResponse("/aluno/curso", status.HTTP_303_SEE_OTHER)
     adicionar_mensagem_sucesso(response, mensagem)
     return response
+
+@router.post("/post_visualizar", response_class=RedirectResponse)
+async def post_visualizar(request: Request, id_curso: int = Form(0)):
+    curso = CursoRepo.obter_um(id_curso)
+    return templates.TemplateResponse(
+        "pages/visualizacao.html",
+        {"request": request, "curso": curso},
+    )
